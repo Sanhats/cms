@@ -1,11 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { supabase } from "../lib/supabase-client"
 
 export default function SignIn() {
-  const router = useRouter()
+ 
   const [isLoading, setIsLoading] = useState(false)
 
   const handleGoogleSignIn = async () => {
@@ -18,9 +17,7 @@ export default function SignIn() {
         },
       })
       if (error) throw error
-    } catch (error) {
-      alert(error.message)
-    } finally {
+    }  finally {
       setIsLoading(false)
     }
   }

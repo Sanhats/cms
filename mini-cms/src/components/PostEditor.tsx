@@ -54,13 +54,13 @@ export default function PostEditor({ post }: PostEditorProps) {
 
     if (post) {
       // Update existing post
-      const { data, error } = await supabase.from("posts").update(postData).eq("id", post.id)
+      const { error } = await supabase.from("posts").update(postData).eq("id", post.id)
 
       if (error) console.log("error", error)
       else router.push("/dashboard")
     } else {
       // Create new post
-      const { data, error } = await supabase.from("posts").insert([postData])
+      const {  error } = await supabase.from("posts").insert([postData])
 
       if (error) console.log("error", error)
       else router.push("/dashboard")
